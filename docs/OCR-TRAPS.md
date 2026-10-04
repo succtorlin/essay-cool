@@ -61,8 +61,8 @@ This also produces a *good* signal: one card elided a phrase precisely because i
 ## Measure your corruption before trusting any count
 
 ```python
-raw  = len(re.findall(r'admissions officer', text, re.I))          # 23
-norm = len(re.findall(r'admissions\s*of\s*ficer', squeeze(text)))  # 100
+raw  = len(re.findall(r'load path', text, re.I))            # 23
+norm = len(re.findall(r'load\s*p\s*ath', squeeze(text)))     # 100   <-真实计数
 ```
 
 **4.3×.** Any frequency claim built on the raw number is wrong. Run this check on your own corpus before you quantify anything in it.

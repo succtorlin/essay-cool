@@ -1,20 +1,24 @@
 # essay-cool
 
-**Three gates that catch the defects LLM-written AI skills actually ship with.**
+**The quality gates that came out of turning three books into an AI skill pack — and the blocker they found.**
 
-An LLM wrote 19 capability cards from three source books. Structural validation passed. Schema validation passed. The official packager reported `0 errors, 0 warnings`.
+`essay-cool` was a distillation project: take three books on college application essays, extract the methodology, compile it into installable agent skills. An LLM wrote 19 capability cards. Structural validation passed. Schema validation passed. The official packager reported `0 errors, 0 warnings`.
 
 The flagship skill was **unexecutable**. It instructed the reader to audit 26 items, demanded a 26-row output table, set its completion standard at "all 26 judged" — and never contained the 26 items. A clean executor could produce at most 16 rows. One item existed nowhere in the package at all.
 
 Every static check was green. None of them asked *"can anyone actually run this?"*
 
-These are the gates that found that, plus two others that found a fabricated-looking quote and five quotations credited to the wrong named human being.
+This repo is what the project left behind: the three gates that found that, plus two others that caught a fabricated-looking quotation and five quotations credited to the wrong named human being.
 
 ```
 quote fragments checked: 272 | untraceable: 0
 attributed quotes checked: 62 | MISATTRIBUTED: 0
 19 files, 0 violations
 ```
+
+**The gates are source-agnostic.** Nothing here is specific to essays, or to any subject. Point them at whatever you generate from whatever sources. The essay project is only where they were forged — and the reason the README can tell you exactly which defects they catch in the wild rather than in theory.
+
+> **No content from the source books is in this repository.** The distilled skills stayed private; only the tooling and the method are here. The demo uses a synthetic source written for this repo.
 
 ---
 
@@ -69,11 +73,11 @@ Tested against mixed input:
 
 ```
 quote fragments checked: 3 | untraceable: 2
-  UNTRACEABLE  mixed.md   Admissions officers consistently reward applicants who show unwavering...
-  UNTRACEABLE  mixed.md   The essay is fundamentally a test of how well you think rather than how well you write.
+  UNTRACEABLE  mixed.md   Industry consensus holds that a thorough first pass requires no fewer than three...
+  UNTRACEABLE  mixed.md   A photograph without a scale reference is merely anecdotal rather than evidential.
 ```
 
-The first is invented. **The second is a paraphrase of something the source really says** — defensible as a summary, indefensible inside quotation marks. The real quote traced fine.
+The first is invented outright. **The second is a faithful paraphrase of something the source really says** — defensible as a summary, indefensible inside quotation marks. The third quote, a real one, traced fine.
 
 ### The hard part is not string matching
 
@@ -87,7 +91,7 @@ Real sources are OCR'd scans. Naive `grep` fails on all five of these, and they 
 | **Page furniture mid-sentence** | `of this 139 <<<PAGE 154>>> Book Title essay is` | severs the sentence |
 | Author-side elision | `"A … B"` | neither half matches whole |
 
-On one book, `grep -c "admissions officer"` returned **23**. Whitespace-normalized: **100**. A **4.3× undercount** — and any frequency claim built on the raw number is wrong.
+On one scanned book, a raw `grep -c` for a common two-word phrase returned **23**. Whitespace-normalized, the true count was **100** — a **4.3× undercount**. Any frequency claim built on the raw number is wrong.
 
 > **The non-obvious bug, if you build this yourself:** cleanup order matters. A running header is the *anchor* for locating the page number printed next to it. Strip the header first and you orphan a digit in the middle of a sentence, severing quotes that span a page break. They must be removed in one pass.
 
@@ -106,11 +110,11 @@ Gate 1 confirms a quote is *in* the source. It cannot tell you it is credited to
 ```bash
 python3 gates/verify_attribution.py \
   --artifacts 'cards/*.md' --sections sections.json \
-  --names Reider Smith Hernandez Ostrum
+  --names Okonkwo Raman
 ```
 
 ```
-WRONG SPEAKER  feedback.md  claims Hernandez  actual=Ostrum  "not fine to have someone... do line by line edits"
+WRONG SPEAKER  broken-card.md  claims Raman  actual=Okonkwo  "A crack without a ruler beside it is an anecdote, not a measurement."
 ```
 
 ### The trap it exists for
@@ -122,7 +126,7 @@ This gate found **5 real misattributions** in otherwise careful work. The worst 
 Finding the boundaries honestly needs **two independent signals**:
 
 1. **Bio positions.** If a Q&A begins before the first bio, bios must be at section *ends*.
-2. **First-person institutional references.** *"Unlike many colleges, Dartmouth doesn't sort applications…"* must fall inside the Dartmouth person's section.
+2. **First-person institutional references.** A line like *"Unlike many teams, Riverside begins at the bearings"* must fall inside the Riverside person's section. (That exact sentence is in the demo source — the signal is real and you can watch it work.)
 
 When the two agree, you have your boundaries. When they disagree, don't guess — read the chapter.
 
@@ -204,7 +208,9 @@ Blind execution: **1 blocker + 12 defects**, including a taxonomy declared mutua
 
 These gates check **fidelity to a source** and **structural conformance**. They do not check whether the source is any good, whether its claims are true, or whether the advice works. Those are different problems.
 
-The tools are source-agnostic — nothing here is specific to any subject matter. No content from the books that prompted this work is included in this repository.
+## About the name
+
+`essay-cool` is the name of the distillation project that produced these tools, not a description of what they do. The gates are general-purpose; the demo is deliberately set in an unrelated domain (bridge inspection) so that no third-party content ships with the repo. If you arrived looking for essay-writing software, this is a verification toolkit — the part of that project that generalizes.
 
 ## License
 

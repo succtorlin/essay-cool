@@ -2,6 +2,8 @@
 
 How the gates fit together, and what each one can and cannot see.
 
+Written from the `essay-cool` run: three books distilled into 19 capability cards and 8 installable agent skills, verified by the gates in this repo. The numbers quoted throughout are from that run, not illustrations.
+
 ## Four checks, increasing power, increasing cost
 
 | # | Check | Catches | Cost | Can it see the blocker? |
