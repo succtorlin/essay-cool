@@ -1,0 +1,21 @@
+name: gates
+on: [push, pull_request]
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+      - name: good card must pass all three gates
+        working-directory: examples/demo
+        run: |
+          python3 ../../gates/check_contract.py    --artifacts 'cards/good-card.md' --contract contract.json
+          python3 ../../gates/verify_quotes.py     --artifacts 'cards/good-card.md' --sources 'sources/*.txt' --header 'BRIDGE INSPECTION HANDBOOK'
+          python3 ../../gates/verify_attribution.py --artifacts 'cards/good-card.md' --sections sections.json --names Okonkwo Raman
+      - name: broken card must FAIL each gate (exit 1)
+        working-directory: examples/demo
+        run: |
+          ! python3 ../../gates/check_contract.py    --artifacts 'cards/broken-card.md' --contract contract.json
+          ! python3 ../../gates/verify_quotes.py     --artifacts 'cards/broken-card.md' --sources 'sources/*.txt' --header 'BRIDGE INSPECTION HANDBOOK'
+          ! python3 ../../gates/verify_attribution.py --artifacts 'cards/broken-card.md' --sections sections.json --names Okonkwo Raman

@@ -1,0 +1,16 @@
+{
+  "required_sections": ["## R —", "## I —", "## A1 —", "## A2 —", "## E —", "## B —"],
+  "ordered": true,
+  "max_quote_words": 100,
+  "required_in_section": {
+    "## B —": ["不承诺", "生存者"]
+  },
+  "banned_unless_negated": {
+    "pattern": "招生官普遍认为",
+    "negators": ["禁止", "不要", "不得", "不能", "避免", "写成"]
+  },
+  "require_if_present": {
+    "2017 → 现在": ["知识截止"]
+  },
+  "max_numeric_ref": { "pattern": "#\\s?(\\d{1,2})", "max": 26 }
+}

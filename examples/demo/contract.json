@@ -1,0 +1,8 @@
+{
+  "required_sections": ["## SOURCE", "## METHOD", "## LIMITS"],
+  "ordered": true,
+  "max_quote_words": 40,
+  "required_in_section": { "## LIMITS": ["two inspectors", "not generalise"] },
+  "banned": ["industry consensus", "all engineers agree"],
+  "max_numeric_ref": { "pattern": "#\\s?(\\d{1,2})", "max": 3 }
+}

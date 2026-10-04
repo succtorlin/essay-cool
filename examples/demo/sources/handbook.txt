@@ -1,0 +1,29 @@
+BRIDGE INSPECTION HANDBOOK — Q&A WITH TWO INSPECTORS
+(Synthetic source written for this demo. Not a real publication.
+ Deliberately mangled to imitate OCR output: note the intra-word spaces,
+ the "1" standing in for "I", and the page furniture landing mid-sentence.)
+
+Q: Where do you start on a span you have never seen?
+A: You start underneath. Unlike many teams, Riverside begins at the bearings
+and works upward, because a bearing that has seized tells you more about the
+deck than the deck will tell you about the bearing. 1 have never once regretted
+starting low.
+
+Q: What do inspectors most often get wrong?
+A: They photograph the damage and forget to photograph the scale. A crack
+without a ruler beside it is an anecdote, not a measur ement.
+
+Dana Okonkwo is the former lead inspector at Riverside Transit Authority and
+the author of Load Paths in Practice.
+
+Q: How long should a first pass take?
+A: Longer than anyone budgets. At Fairview we allowed two inspectors a full
+day per span, and we still 47 BRIDGE INSPECTION HANDBOOK found things on the
+second visit. The rule 1 settled on is that if you finish early you have not
+finished.
+
+Q: What makes a report usable six years later?
+A: Photographs keyed to a sketch. Words drift, sketches do not.
+
+Priya Raman is the former district engineer at Fairview County and wrote the
+inspection manual still used there.
