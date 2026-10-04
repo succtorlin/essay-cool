@@ -1,6 +1,16 @@
 # essay-cool
 
+[![Stars](https://img.shields.io/github/stars/succtorlin/essay-cool?style=flat&logo=github&color=f5c518)](https://github.com/succtorlin/essay-cool/stargazers)
+[![CI](https://img.shields.io/github/actions/workflow/status/succtorlin/essay-cool/gates.yml?branch=main&label=gates&logo=githubactions&logoColor=white)](https://github.com/succtorlin/essay-cool/actions/workflows/gates.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Python 3.8+](https://img.shields.io/badge/python-3.8%2B-3776ab?logo=python&logoColor=white)](https://www.python.org/)
+[![Dependencies: none](https://img.shields.io/badge/dependencies-none-success)](gates/)
+
 **The quality gates that came out of turning three books into an AI skill pack — and the blocker they found.**
+
+![All three gates running against the demo: a contract violation, an untraceable quotation, and a quote credited to the wrong speaker](docs/demo.gif)
+
+*Real output from `examples/demo` — the clean card passes all three, the broken card fails each for a different reason. Reproduce it in under a minute: [Install](#install).*
 
 `essay-cool` was a distillation project: take three books on college application essays, extract the methodology, compile it into installable agent skills. An LLM wrote 19 capability cards. Structural validation passed. Schema validation passed. The official packager reported `0 errors, 0 warnings`.
 
