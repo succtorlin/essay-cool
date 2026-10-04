@@ -1,4 +1,4 @@
-# skill-gates
+# essay-cool
 
 **Three gates that catch the defects LLM-written AI skills actually ship with.**
 
@@ -37,8 +37,8 @@ Schema validators check shape. Linters check syntax. Neither checks whether the 
 No dependencies. Python 3.8+.
 
 ```bash
-git clone https://github.com/succtorlin/skill-gates
-cd skill-gates
+git clone https://github.com/succtorlin/essay-cool
+cd essay-cool
 ```
 
 Run the demo — it ships a synthetic source and two cards, one clean and one with three planted defects:
